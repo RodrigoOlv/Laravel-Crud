@@ -14,7 +14,7 @@
     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
             <a
-                class="nav-link {{ request()->routeIs('index') ? 'active' : '' }}"
+                class="nav-link{{ $current == 'home' ? ' active' : '' }}"
                 href="{{ route('index') }}"
             >
                 Home
@@ -22,7 +22,7 @@
         </li>
         <li class="nav-item">
             <a
-                class="nav-link {{ request()->routeIs('product.*') ? 'active' : '' }}"
+                class="nav-link{{ $current == 'products' ? ' active' : '' }}"
                 href="{{ route('product') }}"
             >
                 Produtos
@@ -30,7 +30,7 @@
         </li>
         <li class="nav-item">
             <a
-                class="nav-link {{ request()->routeIs('category.*') ? 'active' : '' }}"
+                class="nav-link{{ $current == 'categories' ? ' active' : '' }}"
                 href="{{ route('category') }}"
             >
                 Categorias
