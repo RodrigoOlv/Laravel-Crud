@@ -19,7 +19,7 @@ Route::get('/', function () {
     return view('index');
 })->name('index');
 
-Route::get('/categorias', [CategoryController::class, 'index'])->name('categories');
+Route::get('/categorias', [CategoryController::class, 'index'])->name('category');
 
 Route::get('/categorias/novo', [CategoryController::class, 'create'])->name('category.create');
 
@@ -31,7 +31,7 @@ Route::post('/categorias/editar/{id}', [CategoryController::class, 'update'])->n
 
 Route::get('/categorias/deletar/{id}', [CategoryController::class, 'destroy'])->name('category.delete');
 
-Route::get('/produtos', [ProductController::class, 'index'])->name('products');
+Route::get('/produtos', [ProductController::class, 'indexView'])->name('product');
 
 Route::get('/produto/novo', [ProductController::class, 'create'])->name('product.create');
 

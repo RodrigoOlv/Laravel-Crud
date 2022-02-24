@@ -11,7 +11,7 @@
                             Aqui você cadastra todos os seus produtos.
                             Só não esqueça de cadastrar previamente as categorias.
                         </p>
-                        <a href="{{ route('products') }}" class="btn btn-primary mt-auto mr-auto">
+                        <a href="{{ route('product') }}" class="btn btn-primary mt-auto mr-auto">
                             Cadastre seus produtos
                         </a>
                     </div>
@@ -24,7 +24,7 @@
                         <p class="card-text">
                             Cadastre as categorias dos seus produtos
                         </p>
-                        <a href="{{ route('categories') }}" class="btn btn-primary mt-auto mr-auto">
+                        <a href="{{ route('category') }}" class="btn btn-primary mt-auto mr-auto">
                             Cadastre suas categorias
                         </a>
                     </div>

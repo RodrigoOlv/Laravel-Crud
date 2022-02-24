@@ -18,6 +18,7 @@ class CategoryController extends Controller
         return view('categories', compact(['categories']));
     }
 
+
     /**
      * Show the form for creating a new resource.
      *
@@ -42,7 +43,7 @@ class CategoryController extends Controller
 
         $cat->save();
 
-        return redirect()->route('categories');
+        return redirect()->route('category');
     }
 
     /**
@@ -70,7 +71,7 @@ class CategoryController extends Controller
 
             return view('edit-category', compact(['cat']));
 
-        return redirect()->route('categories');
+        return redirect()->route('category');
     }
 
     /**
@@ -91,7 +92,7 @@ class CategoryController extends Controller
             $cat->save();
         }
 
-        return redirect()->route('categories');
+        return redirect()->route('category');
     }
 
     /**
@@ -108,6 +109,13 @@ class CategoryController extends Controller
 
             $cat->delete();
 
-        return redirect()->route('categories');
+        return redirect()->route('category');
+    }
+
+    public function indexJson()
+    {
+        $cat = Category::all();
+
+        return json_encode($cat);
     }
 }

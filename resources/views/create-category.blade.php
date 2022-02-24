@@ -3,7 +3,7 @@
 @section('body')
     <div class="card border">
         <div class="card-body">
-            <form action="{{ route('categories') }}" method="post">
+            <form action="{{ route('category') }}" method="post">
                 @csrf
                 <div class="form-floating mb-3">
                     <input

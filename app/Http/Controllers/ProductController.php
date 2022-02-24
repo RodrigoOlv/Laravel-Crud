@@ -17,6 +17,13 @@ class ProductController extends Controller
     {
         $products = Product::all();
 
+        return $products->toJson();
+    }
+
+    public function indexView()
+    {
+        $products = Product::all();
+
         return view('products', compact(['products']));
     }
 
@@ -42,14 +49,14 @@ class ProductController extends Controller
     {
         $prod = new Product();
 
-        $prod->name = $request->input('name');
-        $prod->stock = $request->input('stock');
-        $prod->price = $request->input('price');
-        $prod->category_id = $request->input('category');
+        $prod->name = $request->name;
+        $prod->stock = $request->stock;
+        $prod->price = $request->price;
+        $prod->category_id = $request->category_id;
 
         $prod->save();
 
-        return redirect()->route('products');
+        return json_encode($prod);
     }
 
     /**
@@ -60,7 +67,13 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $prod = Product::find($id);
+
+        if ( isset($prod) )
+            
+            return json_encode($prod);
+
+        return response('Produto não encontrado', 404);
     }
 
     /**
@@ -78,7 +91,7 @@ class ProductController extends Controller
 
             return view('edit-product', compact(['prod', 'categories']));
 
-        return redirect()->route('products');
+        return redirect()->route('product');
     }
 
     /**
@@ -94,15 +107,17 @@ class ProductController extends Controller
 
         if ( isset($prod) ) {
 
-            $prod->name = $request->input('name');
-            $prod->stock = $request->input('stock');
-            $prod->price = $request->input('price');
-            $prod->category_id = $request->input('category');
+            $prod->name = $request->name;
+            $prod->stock = $request->stock;
+            $prod->price = $request->price;
+            $prod->category_id = $request->category_id;
 
             $prod->save();
+
+            return json_encode($prod);
         }
 
-        return redirect()->route('products');
+        return response('Produto não encontrado', 404);
     }
 
     /**
@@ -115,10 +130,13 @@ class ProductController extends Controller
     {
         $prod = Product::find($id);
 
-        if ( isset($prod) )
+        if ( isset($prod) ) {
 
             $prod->delete();
 
-        return redirect()->route('products');
+            return response('OK', 200);
+        }
+
+        return response('Produto não encontrado', 404);
     }
 }
